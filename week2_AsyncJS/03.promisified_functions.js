@@ -26,20 +26,20 @@ function setTimeOut_Promisified(delay, value) {
 
 //02.FETCH PROMISIFIED VERSION
 function fetch_Promisified(url) {
-    return new Promise((resolve, reject) => {
-        fetch(url)
-            .then((response) => {
-                if (!response.ok) {throw Error(response.statusText)}
-                return response.json()
-            })
-            .then((data)=>resolve(data))
-            .catch((error)=>reject(error))  
-            .finally(()=>console.log('fullfilled'))
-    })
+    const res = fetch(url)
+        .then((response) => {
+            if (!response.ok) { throw Error(response.statusText) }
+            return response.json()
+        })
+        .catch((error) => { throw Error(error) })
+        .finally(() => console.log('fullfilled'));
+
+    return res;
 }
 
-(async()=>{
-    const result = await fetch_Promisified(`https://jsonplaceholder.typicode.com/posts/13`)
+(async () => {
+    const URL = `https://jsonplaceholder.typicode.com/posts/13`
+    const result = await fetch_Promisified(URL)
     console.log(result)
 })()
 
@@ -48,16 +48,17 @@ function fetch_Promisified(url) {
 
 //03.fs.readFile PROMISIFIED VERSION
 const fs = require('fs');
-function readFile_Promisified(file_path,encoding) {
+function readFile_Promisified(file_path, encoding) {
     return new Promise((resolve, reject) => {
-        fs.readFile(file_path,encoding, (err, data) => {
+        fs.readFile(file_path, encoding, (err, data) => {
             if (err) reject(err)
             resolve(data)
         })
     })
 }
 
-(async()=>{
-    const result = await readFile_Promisified('./demo1.txt', 'utf-8');
+(async () => {
+    const FILE_PATH = './demo1.txt'
+    const result = await readFile_Promisified(FILE_PATH, 'utf-8');
     console.log(result)
 })()
