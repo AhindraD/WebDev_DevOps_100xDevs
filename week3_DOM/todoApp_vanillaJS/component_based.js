@@ -3,7 +3,7 @@ const TodoList = document.querySelector(".todos");
 
 let todos = [];
 function addTodo() {
-    //state update
+    //state update  --- adding new todo
     todos.push({
         id: Date.now(),
         title: inputEl.value
@@ -12,20 +12,23 @@ function addTodo() {
     render();
 }
 
-function deleteTodo() {
-
+function deleteTodo(deleteID) {
+    //state update --- filtering out the deleted todo
+    todos = todos.filter((todo) => todo.id !== deleteID);
     render();
 }
 
 function render() {
-    //render
+    //cleaning already rendered todos
     TodoList.innerHTML = "";
+    //rendering new todos
     todos.map((todo) => {
         console.log(todo)
         let todoElm = createTodoComponent(todo);
         TodoList.appendChild(todoElm);
     })
 }
+
 
 
 
@@ -42,7 +45,8 @@ function createTodoComponent(todo) {
     let deleteBtn = document.createElement("button");
     deleteBtn.innerHTML = "Delete";
     deleteBtn.addEventListener("click", () => {
-        todoElm.parentNode.removeChild(todoElm);
+        // todoElm.parentNode.removeChild(todoElm);
+        deleteTodo(todo.id);
     })
     deleteBtn.classList.add("delete-bttn");
     todoElm.appendChild(deleteBtn);
