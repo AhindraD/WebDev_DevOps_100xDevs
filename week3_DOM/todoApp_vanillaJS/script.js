@@ -2,7 +2,7 @@ const InputEl = document.querySelector(".input");
 const AddBtn = document.querySelector(".add");
 const TodoList = document.querySelector(".todos");
 
-function addTask() {
+function addTodo() {
     let task = InputEl.value;
     if (!task) { return }
     let todoElm = document.createElement("div");
