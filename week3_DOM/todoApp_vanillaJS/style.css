@@ -60,7 +60,7 @@
 .todo {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 10px;
     width: 400px;
     padding: 10px;
     background: #fff;
@@ -71,22 +71,43 @@
 .todo-content {
     font-size: 18px;
     font-weight: bold;
+    width: 100%;
 }
 
-.delete-bttn {
+.delete-bttn,
+.edit-bttn,
+.save-bttn {
     cursor: pointer;
     height: 100%;
     padding: 5px 10px;
-    background: black;
-    color: white;
     border: none;
     outline: none;
+    font-weight: bold;
     border-radius: 5px;
     font-size: 16px;
     box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.649);
     transition: all 0.3s ease;
 }
 
-.delete-bttn:hover {
+.delete-bttn:hover,
+.edit-bttn:hover,
+.save-bttn:hover {
     box-shadow: none;
+}
+
+.delete-bttn {
+    background: red;
+}
+
+.edit-bttn {
+    background: rgb(255, 149, 0);
+}
+
+.save-bttn {
+    background: rgb(0, 187, 0);
+}
+
+.done-editing {
+    outline: none;
+    border: none;
 }
