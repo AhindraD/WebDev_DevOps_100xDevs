@@ -3,3 +3,5 @@ dist
 .env
 .env.local
 .env.development
+week2_AsyncJS/z2.js
+week2_AsyncJS/z1.ts
