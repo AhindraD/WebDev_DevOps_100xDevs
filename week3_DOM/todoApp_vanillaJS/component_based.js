@@ -1,6 +1,6 @@
 const inputEl = document.querySelector(".input");
 const TodoList = document.querySelector(".todos");
-
+//state derived rendering
 let todos = [];
 function addTodo() {
     //state update  --- adding new todo
