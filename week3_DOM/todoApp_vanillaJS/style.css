@@ -14,6 +14,13 @@
     background: #000;
 }
 
+.inputSec {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
 .input {
     padding: 5px 10px;
     background: #fff;
@@ -21,15 +28,24 @@
     outline: none;
     border-radius: 5px;
     font-size: 16px;
+    font-weight: bold;
 }
 
 .add-bttn {
     padding: 5px 10px;
-    background: #fff;
+    background: yellow;
     border: none;
     outline: none;
     border-radius: 5px;
     font-size: 16px;
+    font-weight: bolder;
+    cursor: pointer;
+    box-shadow: 3px 3px 0px rgba(255, 255, 0, 0.649);
+    transition: all 0.3s ease;
+}
+
+.add-bttn:hover {
+    box-shadow: none;
 }
 
 .todos {
@@ -49,10 +65,17 @@
     padding: 10px;
     background: #fff;
     border-radius: 5px;
+
+}
+
+.todo-content {
     font-size: 18px;
+    font-weight: bold;
 }
 
 .delete-bttn {
+    cursor: pointer;
+    height: 100%;
     padding: 5px 10px;
     background: black;
     color: white;
@@ -60,4 +83,10 @@
     outline: none;
     border-radius: 5px;
     font-size: 16px;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.649);
+    transition: all 0.3s ease;
+}
+
+.delete-bttn:hover {
+    box-shadow: none;
 }

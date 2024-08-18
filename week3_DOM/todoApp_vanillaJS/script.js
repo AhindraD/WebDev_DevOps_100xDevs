@@ -5,22 +5,22 @@ const TodoList = document.querySelector(".todos");
 function addTask() {
     let task = InputEl.value;
     if (!task) { return }
-    let taskEl = document.createElement("div");
-    taskEl.classList.add("todo");
+    let todoElm = document.createElement("div");
+    todoElm.classList.add("todo");
 
     let taskContent = document.createElement("div");
-    taskContent.classList.add("task-content");
-    taskEl.appendChild(taskContent);
+    taskContent.classList.add("todo-content");
+    todoElm.appendChild(taskContent);
     taskContent.innerHTML = task;
 
     let deleteBtn = document.createElement("button");
     deleteBtn.innerHTML = "Delete";
     deleteBtn.addEventListener("click", () => {
-        taskEl.parentNode.removeChild(taskEl);
+        todoElm.parentNode.removeChild(todoElm);
     })
     deleteBtn.classList.add("delete-bttn");
-    taskEl.appendChild(deleteBtn);
+    todoElm.appendChild(deleteBtn);
 
-    TodoList.appendChild(taskEl);
+    TodoList.appendChild(todoElm);
     InputEl.value = "";
 }
