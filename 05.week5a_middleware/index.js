@@ -4,7 +4,7 @@ const app = express()
 
 let visitCount = 0;
 const middleware_sumFn = (req, res, next) => {
-    console.log("middleware called");
+    console.log("middleware1 called...");
     console.log(`Total visits: ${++visitCount}`);
     console.log({
         "method": req.method,
@@ -22,6 +22,11 @@ const middleware_sumFn = (req, res, next) => {
     }
 }
 
+const logging_middleware = (req, res, next) => {
+    console.log("middleware2 called...");
+    next();
+}
+
 const realSumFn = ((req, res) => {
     //localhost:3000/sum?a=3&b=5
     let { a, b } = req.query;
@@ -35,6 +40,6 @@ const realSumFn = ((req, res) => {
     })
 })
 
-app.get("/sum", middleware_sumFn, realSumFn)
+app.get("/sum", middleware_sumFn, logging_middleware, realSumFn)
 
 app.listen(3000, () => console.log("server started at port 3000"))
