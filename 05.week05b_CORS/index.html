@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORS Fn</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.6/axios.min.js"></script>
+</head>
+
+<body>
+    <input type="text" id="a">
+    <input type="text" id="b">
+    <button onclick="getSum()">Submit</button>
+
+    <h1 id="answer"></h1>
+</body>
+
+<script>
+    const answerElm = document.getElementById('answer')
+    function getSum() {
+        const a = document.getElementById('a').value
+        const b = document.getElementById('b').value
+        axios.post('http://localhost:3000/sum',
+            {
+                data: {
+                    a: a,
+                    b: b
+                }
+            }
+        ).then((res) => {
+            console.log(res.data)
+            answerElm.innerHTML = res.data.result
+        })
+    }
+</script>
+
+</html>
