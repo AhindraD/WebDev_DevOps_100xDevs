@@ -6,6 +6,12 @@ let visitCount = 0;
 const middleware_sumFn = (req, res, next) => {
     console.log("middleware called");
     console.log(`Total visits: ${++visitCount}`);
+    console.log({
+        "method": req.method,
+        "host": req.hostname,
+        "url": req.url,
+        "timestamp": new Date().toLocaleString()
+    })
     res.count = visitCount;
     if (visitCount < 10) {
         next();
@@ -19,6 +25,8 @@ const middleware_sumFn = (req, res, next) => {
 const realSumFn = ((req, res) => {
     //localhost:3000/sum?a=3&b=5
     let { a, b } = req.query;
+    a = Number(a);
+    b = Number(b);
     res.json({
         a,
         b,
