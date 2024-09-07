@@ -1,6 +1,5 @@
 const express = require("express")
-const jwt = require("jsonwebtoken");
-const JWT_SECRET = "my_secret_key";
+const { v4: uuidv4 } = require('uuid');
 
 const app = express()
 app.use(express.json())
@@ -38,7 +37,8 @@ app.post("/signin", (req, res) => {
     })
 
     if (foundUser) {
-        const token = jwt.sign({ username: foundUser.username }, JWT_SECRET, { algorithm: "HS256", expiresIn: "30s" });
+        console.log("user found")
+        const token = uuidv4();
         foundUser.token = token;
         res.json({ status: "200", token: token })
     }
@@ -51,11 +51,15 @@ app.post("/signin", (req, res) => {
 app.get("/protected", (req, res) => {
     const token = req.headers.token
     if (token) {
-        const userDetails = jwt.verify(token, JWT_SECRET);
-        // https://jwt.io/    //jwt.decode
-        const username = userDetails.username;
-        if (!username) res.json({ status: "400", message: "invalid token" })
-        res.json({ status: "200", data: username })
+        const findUser = USER_DB.find((user) => {
+            if (user.token === token) {
+                return true
+            } else {
+                return false
+            }
+        })
+        if (!findUser) res.json({ status: "400", message: "invalid token" })
+        res.json({ status: "200", data: findUser })
     }
     else {
         res.json({ status: "400", message: "unauthorized request" })
