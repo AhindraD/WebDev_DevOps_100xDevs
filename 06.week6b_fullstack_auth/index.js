@@ -17,6 +17,12 @@ const logger = (req, res, next) => {
     next();
 }
 
+
+app.get("/", (req, logger, res) => {
+    res.sendFile(__dirname + "./public/index.html")
+})
+
+
 app.post("/signup", logger, (req, res) => {
     const { username, password } = req.body;
     let currUser = {

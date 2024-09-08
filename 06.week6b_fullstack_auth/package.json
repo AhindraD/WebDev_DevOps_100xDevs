@@ -1,5 +1,5 @@
 {
-  "name": "06.week6b_jwt_middleware",
+  "name": "06.week6b_fullstack_auth",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -8,5 +8,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2"
+  }
 }
