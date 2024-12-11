@@ -30,3 +30,5 @@ async function chain() {
     console.log('after 1+3+5s');
 }
 chain(); //returns a promise
+
+console.log('outside chain');
